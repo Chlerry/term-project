@@ -4,6 +4,8 @@ import tensorflow as tf
 from keras.models import Model
 from keras.layers import Input, Dense, Conv2D, Conv2DTranspose, MaxPooling2D, UpSampling2D
 
+import imgpatch
+
 def test_model(train_data, patch_shape):
     input_img = Input(shape=patch_shape)
 
@@ -45,3 +47,14 @@ def get_psnr(test_image, decoded_image):
     PSNR /= n_test
 
     return PSNR
+
+def get_decoded_image(autoencoder, test_data, patch_shape, image_shape):
+    decoded_patches = autoencoder.predict(test_data)
+
+    decoded_patches = np.minimum(decoded_patches, np.ones(decoded_patches.shape, dtype = np.float32))
+    decoded_patches = np.maximum(decoded_patches, np.zeros(decoded_patches.shape, dtype = np.float32))
+
+    block_shape = imgpatch.get_block_shape(image_shape, patch_shape)
+    decoded_image = imgpatch.merge_all_block(decoded_patches, block_shape)
+
+    return decoded_image
