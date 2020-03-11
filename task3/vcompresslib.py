@@ -26,9 +26,9 @@ def test_model(train_data, patch_shape, ratio):
         e = MaxPooling2D((2, 1), padding='same')(e)
         
     e = Conv2D(8, (3, 3), activation='relu', padding='same')(e)
-    encoded = Conv2D(4, (3, 3), activation='relu', padding='same')(e)
+    encoded = Conv2D(3, (3, 3), activation='relu', padding='same')(e)
 
-    d = Conv2D(4, (3, 3), activation='relu', padding='same')(encoded)
+    d = Conv2D(3, (3, 3), activation='relu', padding='same')(encoded)
     d = Conv2D(8, (3, 3), activation='relu', padding='same')(d)
     
     if (ratio == '1/32'):
