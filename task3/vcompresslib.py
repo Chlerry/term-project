@@ -34,6 +34,7 @@ def test_model(train_data, patch_shape):
 
     return autoencoder
 
+# Calculate average PSNR value
 def get_psnr(test_image, decoded_image):
 
     PSNR = 0
@@ -48,12 +49,16 @@ def get_psnr(test_image, decoded_image):
 
     return PSNR
 
+# Obtain decoded image patches from the CNN model, and merge patches back to normal images
 def get_decoded_image(autoencoder, test_data, patch_shape, image_shape):
+    # Obtain decoded image for test_data
     decoded_patches = autoencoder.predict(test_data)
 
+    # Limit pixel value range to [0, 1]
     decoded_patches = np.minimum(decoded_patches, np.ones(decoded_patches.shape, dtype = np.float32))
     decoded_patches = np.maximum(decoded_patches, np.zeros(decoded_patches.shape, dtype = np.float32))
 
+    # Merge patches back to normal images
     block_shape = imgpatch.get_block_shape(image_shape, patch_shape)
     decoded_image = imgpatch.merge_all_block(decoded_patches, block_shape)
 
