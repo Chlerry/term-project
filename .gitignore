@@ -1,0 +1,8 @@
+
+.vscode/settings.json
+./.vscode
+
+task3/__pycache__
+task3/.ipynb_checkpoints
+task3/.ipynb_checkpoints/task3-checkpoint.ipynb
+task3/.ipynb_checkpoints/task3_read_image_divide_patch-checkpoint.ipynb
