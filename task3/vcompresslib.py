@@ -6,6 +6,7 @@ from keras.layers import Input, Dense, Conv2D, Conv2DTranspose, MaxPooling2D, Up
 
 import imgpatch
 
+# Ratio options are: 1/32, 1/16, 1/8, 1/4, 1/2
 def test_model(train_data, patch_shape, ratio):
     input_img = Input(shape=patch_shape)
 
