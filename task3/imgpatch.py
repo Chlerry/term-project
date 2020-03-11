@@ -85,6 +85,9 @@ def load_data(data_path):
         image_path = data_path + '/' + image_names[i]
         image_data[i] =  np.array(Image.open(image_path))[...,:3]
 
+    # Normalize image_data
+    image_data = image_data / 255.0
+    
     return image_data
 
 # Return block_shape: (15, 26) for BlowingBubbles_416x240_50 and RaceHorses_416x240_30
