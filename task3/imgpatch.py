@@ -44,6 +44,32 @@ def merge_block(patch, block_shape):
             
     return img
 
+# block_set for test data:(29250, 16, 16, 3)
+# block_shape: (15, 26)
+# return img: n_test 240 x 416 images
+def merge_all_block(block_set, block_shape):
+    n_frame = block_set.shape[0]
+
+    (block_hight, block_width) = block_shape
+    block_size = block_hight * block_width
+    n_image = n_frame // block_size
+    
+    (frame_hight, frame_width, n_channel) = block_set.shape[1:]
+    image_hight = block_hight * frame_hight
+    image_width = block_width * frame_width
+
+    # image_set_shape: (75, 16*15, 16*26, 3)
+    image_set_shape = (n_image, image_hight, image_width, n_channel)
+    img = np.empty(image_set_shape, dtype = np.float32)
+
+    for i in range(n_image):
+        begin = i * block_size
+        end = begin + block_size
+        patch = block_set[begin:end]
+        img[i] = merge_block(patch, block_shape)
+
+    return img
+
 def load_data(data_path):
     image_names = os.listdir(data_path)
     n_image = len(image_names)
