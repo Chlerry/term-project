@@ -21,6 +21,8 @@ def test_model(train_data, patch_shape, ratio):
         e = Conv2D(32, (5, 5), activation='relu', strides=(1,2),padding='same')(e)
     elif (ratio == '1/16' or ratio == '1/32'):
         e = Conv2D(32, (5, 5), activation='relu', strides=(2,2),padding='same')(e)
+    else:
+        e = Conv2D(32, (5, 5), activation='relu', padding='same')(e)
 
     
     if (ratio == '1/32'):
@@ -37,7 +39,7 @@ def test_model(train_data, patch_shape, ratio):
     if (ratio == '1/32'):
         d = Conv2DTranspose(16, (1, 1), activation='relu', strides=(1,2),padding='same')(d)
     else:
-        d = Conv2D(16, (1, 1), activation='relu', padding='same')d
+        d = Conv2D(16, (1, 1), activation='relu', padding='same')(d)
     
     if(ratio == '1/8'):
         d = Conv2DTranspose(32, (5, 5), activation='relu', strides=(1,2),padding='same')(d)
