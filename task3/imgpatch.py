@@ -107,7 +107,7 @@ def load_data(data_path):
         image_data[i] =  np.array(Image.open(image_path))[...,:3]
 
     # Normalize image_data
-    image_data = image_data / 255.0
+    # image_data = image_data / 255.0
 
     return image_data
 
