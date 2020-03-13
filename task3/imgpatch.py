@@ -156,5 +156,4 @@ def get_patch(image_data, patch_shape):
         for j in range(n_patch):
             patch_data[i*n_patch + j] = block[j]
 
-    print(patch_data.shape)
     return patch_data
