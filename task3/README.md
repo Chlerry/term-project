@@ -27,13 +27,15 @@ For different ratio we use PSNR value to evaluate the performance of the network
 
 # Proposed Method 3
 
+
+
 # Experimental Studies 
-## Dataset description
+## Dataset Description
 There are three sets of images available: RaceHorses_416x240_30 (300 240x416 images), BlowingBubbles_416x240_50 (500 240x416 images), BasketballDrill_832x480_50 (500 480x831 images)
 
 First each image was depatched into multiple 16x16x3 frames. After finishing the training progress and testing progress, patches will merge back to image, which will used to lost evaluation (calculating MSE and PSNR). 
 
-
+Each image set will be splitted as 75% training data and 25% testing data, used for each model to evaluate. 
 
 ## Quantitative evaluation
 
