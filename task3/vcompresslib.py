@@ -53,7 +53,7 @@ def model1(train_data, patch_shape, ratio):
     autoencoder.summary()
     autoencoder.compile(optimizer='adam', loss='mse')
 
-    autoencoder.fit(train_data, train_data, epochs=1, batch_size=25)
+    autoencoder.fit(train_data, train_data, epochs=5, batch_size=25)
 
     return autoencoder
 
@@ -111,7 +111,7 @@ def model2(train_data, patch_shape, ratio):
     autoencoder.summary()
     autoencoder.compile(optimizer='adam', loss='mse')
 
-    autoencoder.fit(train_data, train_data, epochs=1, batch_size=25)
+    autoencoder.fit(train_data, train_data, epochs=5, batch_size=25)
 
     return autoencoder
 
