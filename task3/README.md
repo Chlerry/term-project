@@ -1,8 +1,6 @@
 # Introduction
-As digital video consumption is becomimg an increasingly crucial entertainment method nowdays, people deserve smooth and high quailty streaming experience. However, with the growing resolution, frame rate and time duration, the data storage, and network bandwidth used by video increases rapidly. As the result, video compression becames a pratical problem. A good video compressor and decompressor offers much lower memory cost for videos in the way that keeps the original quaility as much as possible. In our project we will briefly introduce and implement two Convolutional Neural Network architectures proposed by other researchers \cite{}. Also, we will experiment a Generative Adversarial Network with Convolutional Neural architechture \cite{}. 
+As digital video consumption is becomimg an increasingly crucial entertainment method nowdays, people deserve smooth and high quailty streaming experience. However, with the growing resolution, frame rate and time duration, the data storage, and network bandwidth used by video increases rapidly. As the result, video compression becames a pratical problem. A good video compressor and decompressor offers much lower memory cost for videos in the way that keeps the original quaility as much as possible. In our project we will briefly introduce and implement two Convolutional Neural Network architectures proposed by other researchers \cite{}. Also, we will experiment a Generative Adversarial Network with Convolutional Neural Architechture \cite{} to generate chroma components for luminance images. 
 
-
-different network architectures.
 
 # Setup Environment
 conda install -c conda-forge keras
