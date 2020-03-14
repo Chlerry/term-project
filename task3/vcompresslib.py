@@ -33,20 +33,20 @@ def model2(train_data, patch_shape, ratio):
     e = Conv2D(8, (3, 3), activation='relu', padding='same')(e)
     encoded = Conv2D(3, (3, 3), activation='relu', padding='same')(e)
 
-    d = Conv2D(3, (3, 3), activation='relu', padding='same')(encoded)
-    d = Conv2D(8, (3, 3), activation='relu', padding='same')(d)
+    d = Conv2DTranspose(3, (3, 3), activation='relu', padding='same')(encoded)
+    d = Conv2DTranspose(8, (3, 3), activation='relu', padding='same')(d)
     
     if (ratio == '1/32'):
         d = Conv2DTranspose(16, (1, 1), activation='relu', strides=(1,2),padding='same')(d)
     else:
-        d = Conv2D(16, (1, 1), activation='relu', padding='same')(d)
+        d = Conv2DTranspose(16, (1, 1), activation='relu', padding='same')(d)
     
     if(ratio == '1/8'):
         d = Conv2DTranspose(32, (5, 5), activation='relu', strides=(1,2),padding='same')(d)
     elif (ratio == '1/16' or ratio == '1/32'):
         d = Conv2DTranspose(32, (5, 5), activation='relu', strides=(2,2),padding='same')(d)
     else:
-        d = Conv2D(32, (5, 5), activation='relu', padding='same')(d)
+        d = Conv2DTranspose(32, (5, 5), activation='relu', padding='same')(d)
     
     
     if(ratio == '1/2'):
@@ -54,7 +54,7 @@ def model2(train_data, patch_shape, ratio):
     else:
         d = Conv2DTranspose(64, (7, 7), activation='relu', strides=(2,2),padding='same')(d)
     
-    decoded = Conv2D(3, (1, 1), activation='linear')(d)
+    decoded = Conv2DTranspose(3, (1, 1), activation='linear')(d)
 
     autoencoder = Model(input_img, decoded)
     autoencoder.summary()
