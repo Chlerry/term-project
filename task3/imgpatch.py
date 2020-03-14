@@ -85,7 +85,7 @@ def merge_all_block(block_set, block_shape):
 
 # Load image data from local path
 #       Return normalized image array
-def load_data(data_path):
+def load_data(data_path, normailize = True):
     # Obtain a list of image names from data_path
     image_names = os.listdir(data_path)
 
@@ -107,7 +107,8 @@ def load_data(data_path):
         image_data[i] =  np.array(Image.open(image_path))[...,:3]
 
     # Normalize image_data
-    image_data = image_data / 255.0
+    if normailize == True:
+        image_data = image_data / 255.0
 
     return image_data
 
@@ -155,5 +156,4 @@ def get_patch(image_data, patch_shape):
         for j in range(n_patch):
             patch_data[i*n_patch + j] = block[j]
 
-    print(patch_data.shape)
     return patch_data
