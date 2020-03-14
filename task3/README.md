@@ -14,7 +14,7 @@ conda install -c anaconda scikit-image
 # Proposed Method 1
 
 The figure shows the stucture of 1/16 ratio compressor working process. The layers are follow: a 64*7*7 filter, a 2*2 Max-Pooling, a 32*5*5 filter, a 2*2 Max-Pooling, a 16*1*1 filter, a 8*3*3 filter, a 3*3*3 filter. We used the RaceHorses_416*240_30 as training data frames and BlowingBubbles_416*240_50 as test data frames. Since it's a regression problem we choose MSE as the loss function. 
-For the traning process the shape changes are as follow: input 3*16*16 -> 64*16*16 -> 64*8*8 -> 32*8*8 -> 32*4*4 ->16*4*4 -> 8*4*4 -> 3*4*4 and the total parameters been calculated is 9472+51232+528+1160+219
+For the traning process the shape changes are as follow: input 3*16*16 -> 64*16*16 -> 64*8*8 -> 32*8*8 -> 32*4*4 ->16*4*4 -> 8*4*4 -> 3*4*4 and the total parameters been calculated is 9472+51232+528+1160+219. 
 
 # Proposed Method 2
 
@@ -25,7 +25,8 @@ For different ratio we use PSNR value to evaluate the performance of the network
 
 # Proposed Method 3
 
-
+First, in this method, images are converted from RGB colorspace to YCbCr color space. 
+This method uses the Convolutional Neural Network proposed in Method 1 to compress the images' Y channel, which is the images' luminance. After this, the predicted (decoded) luminance images will be passed to a generator to predict their CbCr color mask. After Colorization, the images will be feeded to the discriminator. The generator and discriminator will be trained together to compete with each other. 
 
 # Experimental Studies 
 ## Dataset Description
