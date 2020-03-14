@@ -256,7 +256,7 @@ def train(test_image_y, test_image_cbcr, train_epochs, save_interval):
         
         if save_interval>0:
             # if epoch > train_epochs - 5:
-            # if epoch == train_epochs - 1:
-            if (epoch+1) % save_interval == 0:
+            if epoch == train_epochs - 1:
+            # if (epoch+1) % save_interval == 0:
                 plot_images(gan_image_y, gan_image_cbcr, noise=noise_input)
                 print(log_msg)
