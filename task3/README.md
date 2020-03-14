@@ -44,3 +44,4 @@ Each image set will be splitted as 75% training data and 25% testing data, used 
 ## Complexity and model size analysis
 
 # Conclusions and Future Work
+In conclusion, we tried three different network architectures and we learned the importance of different factors for compress and depress video images. The results are acceptible till the ratios became rather small and as the frames divide into smaller patches the visulization performance getting better. In the sametime, we spent a decent amount of time to train and predict the network which could be improved in the future with faster calculate capability. In other way, the relationship between frames could be predicted to reduce the training dataset size and increase the visulization performance.
