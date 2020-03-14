@@ -13,9 +13,6 @@ conda install -c anaconda pillow
 
 conda install -c anaconda scikit-image
 
-For the training and test data frames we spilited each single frame into muliple 3*16*16 frames as first step. Then we process the network seperately for every patches and merge the patches at the end.
-
-
 # Proposed Method 1
 
 The figure shows the stucture of 1/16 ratio compressor working process. The layers are follow: a 64*7*7 filter, a 2*2 Max-Pooling, a 32*5*5 filter, a 2*2 Max-Pooling, a 16*1*1 filter, a 8*3*3 filter, a 3*3*3 filter. We used the RaceHorses_416*240_30 as training data frames and BlowingBubbles_416*240_50 as test data frames. Since it's a regression problem we choose MSE as the loss function. 
@@ -32,6 +29,11 @@ For different ratio we use PSNR value to evaluate the performance of the network
 
 # Experimental Studies 
 ## Dataset description
+There are three sets of images available: RaceHorses_416x240_30 (300 240x416 images), BlowingBubbles_416x240_50 (500 240x416 images), BasketballDrill_832x480_50 (500 480x831 images)
+
+First each image was depatched into multiple 16x16x3 frames. After finishing the training progress and testing progress, patches will merge back to image, which will used to lost evaluation (calculating MSE and PSNR). 
+
+
 
 ## Quantitative evaluation
 
